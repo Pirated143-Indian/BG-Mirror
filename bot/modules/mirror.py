@@ -136,7 +136,7 @@ class MirrorListener(listeners.MirrorListeners):
 
     def onUploadComplete(self, link: str):
         with download_dict_lock:
-            msg = f'<b>Filename : </b><code>{download_dict[self.uid].name()}</code>\n<b>Size : </b><code>{download_dict[self.uid].size()}</code>'
+            msg = f'<b>📝 Filename : </b><code>{download_dict[self.uid].name()}</code>\n<b>⚖ Size : </b><code>{download_dict[self.uid].size()}</code>\n\n🧲<b>Status</b> : Uploaded To Team Drive ✅\n\n<i>Join <b>MeGCloud Team Drive</b> To Access Gdrive Links</i> '
             buttons = button_build.ButtonMaker()
             buttons.buildbutton("⚡Drive Link⚡", link)
             LOGGER.info(f'Done Uploading {download_dict[self.uid].name()}')
@@ -156,7 +156,7 @@ class MirrorListener(listeners.MirrorListeners):
             else:
                 uname = f'<a href="tg://user?id={self.message.from_user.id}">{self.message.from_user.first_name}</a>'
             if uname is not None:
-                msg += f'\n\ncc : {uname}'
+                msg += f'\n\n📬Added By: {uname}\n\n ♻️ <b>Powered By : @MeGBots || @MeGCloud</b> 
             try:
                 fs_utils.clean_download(download_dict[self.uid].path())
             except FileNotFoundError:
